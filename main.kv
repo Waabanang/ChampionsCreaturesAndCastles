@@ -1,0 +1,26 @@
+#:kivy 1.9.1
+
+<Player>:
+	size: 32, 48
+	canvas:
+		Color:
+            rgb: (255, 255, 255)
+		Rectangle:
+			source: self.source
+			pos: (self.x, self.y)
+			size: self.width, self.height
+
+<BasicShot>:
+	size: 10, 10
+	canvas:
+		Color:
+            rgb: (255, 0, 0)
+        Ellipse:
+        	pos: (self.x, self.y)
+        	size: self.size
+
+<BasicBomb>:
+	size: 100, 100
+
+<BasicQuad>:
+	size: 20, 48
