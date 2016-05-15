@@ -1,26 +1,107 @@
-#:kivy 1.9.1
+<SplashScreen>
+    AnchorLayout:
+        anchor_x: 'center'
+        anchor_y: 'center'
+        
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: (0.5, 1)
+            spacing: 10
 
-<Player>:
-	size: 32, 48
-	canvas:
-		Color:
-            rgb: (255, 255, 255)
-		Rectangle:
-			source: self.source
-			pos: (self.x, self.y)
-			size: self.width, self.height
+            Label:
+                size_hint_y: 0.4
+                text: 'Champions!\n Creatures!\n Castles!\n'
+                valign: 'bottom'
+                halign: 'center'
+                bold: True
+                font_size: 60
+                padding: 0, 0
 
-<BasicShot>:
-	size: 10, 10
-	canvas:
-		Color:
-            rgb: (255, 0, 0)
-        Ellipse:
-        	pos: (self.x, self.y)
-        	size: self.size
+            AnchorLayout:
+                anchor_x: 'center'
+                anchor_y: 'center'
+                size_hint_y: 0.3
 
-<BasicBomb>:
-	size: 100, 100
+                BoxLayout:
+                    size_hint: 0.3, 0.3
+                    orientation: 'vertical'
 
-<BasicQuad>:
-	size: 20, 48
+                    Button:
+                        halign: 'center'
+                        valign: 'middle'
+                        text: 'Play'
+                        on_press: root.manager.current = 'character_select_screen'
+
+<CharSelectScreen>
+    AnchorLayout:
+        anchor_x: 'center'
+        anchor_y: 'center'
+
+        BoxLayout:
+            size_hint: 0.3, 0.3
+            pos_hint: 0.3, 0.5
+            orientation: 'vertical'
+
+            Button:
+                valign: 'middle'
+                halign: 'center'
+                text: 'Warrior'
+                on_press: root.select_character('warrior')
+
+            Button:
+                valign: 'middle'
+                halign: 'center'
+                text: 'Rogue'
+                on_press: root.select_character('rogue')
+
+            Button:
+                valign: 'middle'
+                halign: 'center'
+                text: 'Mage'
+                on_press: root.select_character('mage')
+
+    AnchorLayout:
+        anchor_x: 'center'
+        anchor_y: 'bottom'
+        size_hint_y: 0.1
+
+        BoxLayout:
+            size_hint: 0.3, 0.3
+            orientation: 'vertical'
+
+            Button:
+                halign: 'center'
+                valign: 'middle'
+                text: 'Level Select'
+                on_press: root.go_to_level_select()
+
+<LevelSelectScreen>
+    AnchorLayout:
+        anchor_x: 'center'
+        anchor_y: 'center'
+
+        BoxLayout:
+            size_hint: 0.3, 0.3
+            pos_hint: 0.3, 0.5
+            orientation: 'vertical'
+
+            Button:
+                valign: 'middle'
+                halign: 'center'
+                text: 'Barrels of Fun'
+                on_press: root.select_level('barrels_of_fun')
+    AnchorLayout:
+        anchor_x: 'center'
+        anchor_y: 'bottom'
+        size_hint_y: 0.1
+
+        BoxLayout:
+            size_hint: 0.3, 0.3
+            orientation: 'vertical'
+
+            Button:
+                halign: 'center'
+                valign: 'middle'
+                text: 'Game Start!'
+                on_press: root.start_game()
+
