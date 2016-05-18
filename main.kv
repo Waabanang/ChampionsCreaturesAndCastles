@@ -104,4 +104,13 @@
                 valign: 'middle'
                 text: 'Game Start!'
                 on_press: root.start_game()
+<Player>:
+    FloatLayout:
+        canvas.before:
+            Color:
+                rgba: 0.3, 0.3, 0.3, 1
+            Rectangle:
+                # self here refers to the widget i.e BoxLayout
+                pos: self.pos
+                size: self.size
 

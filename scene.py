@@ -2,10 +2,10 @@ from kivy.uix.widget import Widget
 from kivy.uix.label import Label
 from kivy.core.window import Window
 
-#from enemies import *
+
 
 class Scene(Widget):
-	def __init__(self, **kwargs):
+	def __init__(self, level, **kwargs):
 		super(Scene, self).__init__(**kwargs)
 		pass
 

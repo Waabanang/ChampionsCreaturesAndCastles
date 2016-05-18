@@ -23,7 +23,8 @@ from functools import partial
 from kivy.uix.checkbox import CheckBox
 
 from player import Player
-#from scene import Scene
+from scene import Scene
+from controller import Controller
 
 
 Config.set('graphics','resizable',0) #don't make the app re-sizeable
@@ -31,6 +32,7 @@ Window.clearcolor = (0,0,0,1.0) #this fixes drawing issues on some phones
 
 selected_chars = []
 selected_level = ""
+
 
 class Game(FloatLayout):
     '''
@@ -40,9 +42,12 @@ class Game(FloatLayout):
     def __init__(self, **kwargs):
         super(Game, self).__init__(size = (10000, 10000))
         self.player = Player(selected_chars)
-        # self.scene = Scene(selected_level)
-        # self.scene.add_widget(player)
-        # self.add_widget(self.scene)
+        self.scene = Scene(selected_level, size = self.size)
+        self.scene.add_widget(self.player)
+        self.add_widget(self.scene)
+        self.controller = Controller(self.player)
+        
+        Clock.schedule_interval(self.update, 1.0/60.0)
 
     def update(self,dt):
         '''
@@ -50,6 +55,7 @@ class Game(FloatLayout):
         All of the game logic has its origin here
         dt - The change in time between updates of the game logic
         '''
+        self.player.update(dt)
 
 class SplashScreen(Screen):
     '''
